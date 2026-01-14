@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chief Safaris | Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Chief Safaris</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-area">
+        <h1>Contact the Chief Safaris Team</h1>
+        <p>We're here to help you plan your perfect trip. Fill out the form below or reach out directly.</p>
+
+        <form id="whatsappForm" class="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address (Optional):</label>
+            <input type="email" id="email" name="email"> 
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="subject">Inquiry Subject:</label>
+            <select id="subject" name="subject">
+                <option value="General">General Inquiry</option>
+                <option value="Coaster">Inquiry about Coaster Van</option>
+                <option value="Van">Inquiry about Executive/Premium Van</option>
+                <option value="TourVan">Inquiry about Tour Van</option>
+                <option value="Other">Other Booking Request</option>
+            </select>
+
+            <label for="message">Your Message / Inquiry Details:</label>
+            <textarea id="message" name="details" rows="6" required></textarea>
+
+            <div class="form-actions">
+    <button type="button" class="button primary" onclick="sendToWhatsApp()">Send Inquiry</button>
+    
+    <a href="tel:+254792589609" class="button call-now">Call Now</a>
+</div>
+        </form>
+
+        <div class="direct-contact">
+            <h2>Our Contact Details</h2>
+            <p>&#9742; Phone: (254) 792-589609
+            </p>
+            <p>&#9993; Email: info@chiefsafaris.com</p>
+            <p>&#127968; Address: Nakuru, Kenya </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Chief Safaris. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script> 
+    <spam>
+</form>
+</spam>
+</body>
+</html>
