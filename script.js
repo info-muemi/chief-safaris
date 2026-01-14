@@ -2,22 +2,19 @@ const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
-        
-        
+        // 1. Stop the form from trying to submit to GitHub (which causes the refresh/fail)
         event.preventDefault(); 
         
-        
-        function clearErrors() {
-            document.querySelectorAll('.error-message').forEach(el => {
-                el.textContent = '';
-                el.style.display = 'none';
-            });
-            document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(el => {
-                el.classList.remove('invalid');
-            });
-        }
+        // 2. Clear previous errors
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
+        document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(el => {
+            el.classList.remove('invalid');
+        });
 
-        clearErrors(); 
+        // 3. Get Input Values
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phone');
@@ -29,14 +26,13 @@ if (contactForm) {
         
         let isValid = true; 
 
-        
+        // 4. Validation Checks
         if (nameInput.value.trim() === '') {
             nameError.textContent = 'Name is required.';
             nameError.style.display = 'block';
             nameInput.classList.add('invalid');
             isValid = false;
         } 
-        
         
         if (messageInput.value.trim() === '') {
             messageError.textContent = 'Message details are required.';
@@ -45,39 +41,35 @@ if (contactForm) {
             isValid = false;
         }
 
-        
         const emailValue = emailInput.value.trim();
         const phoneValue = phoneInput.value.trim();
         
         if (emailValue === '' && phoneValue === '') {
             contactError.textContent = 'Please provide either an Email or Phone number.';
             contactError.style.display = 'block';
-            
             emailInput.classList.add('invalid');
             phoneInput.classList.add('invalid');
             isValid = false;
         }
         
-        
+        // 5. THE FIX: If valid, send to WhatsApp instead of contactForm.submit()
         if (isValid) {
+            const phoneNumber = "254792589609"; 
             
-            contactForm.submit();
+            // Build the dynamic message with the user's data
+            const waMessage = `Hello Chief Safaris!%0A%0A` +
+                              `*New Inquiry from Website*%0A` +
+                              `*Name:* ${nameInput.value}%0A` +
+                              `*Contact:* ${emailValue || phoneValue}%0A` +
+                              `*Message:* ${messageInput.value}`;
+
+            const url = "https://wa.me/" + phoneNumber + "?text=" + waMessage;
+
+            // Open WhatsApp in new tab
+            window.open(url, '_blank').focus();
+            
+            // Reset form so the user knows it's finished
+            contactForm.reset();
         }
     });
 }
-function sendToWhatsApp() {
-    // 1. Your stakeholder's phone number (Use International Format: Country Code + Number)
-    // Example: 254 for Kenya. No + or 0 at the start.
-    const phoneNumber = "254792589609"; 
-
-    // 2. The Message (Customized for Chief Safaris)
-    const message = "Hello Chief Safaris! I am interested in an executive transport inquiry from your website.";
-
-    // 3. Create the WhatsApp URL
-    const url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
-
-    // 4. Open in a NEW TAB (This keeps your website open for the user)
-    window.open(url, '_blank').focus();
-}
-<
-
