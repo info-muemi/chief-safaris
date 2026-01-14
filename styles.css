@@ -357,19 +357,19 @@ footer {
     resize: vertical; 
 }
 
-/* --- Centered Contact Form Container --- */
+
 .contact-form {
     background: #ffffff; 
     padding: 40px; 
     border-radius: 10px; 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
     
-    /* These 3 lines center the form on your page */
+  
     max-width: 700px;    
-    margin: 40px auto;   /* auto on left/right centers it */
+    margin: 40px auto;  
 }
 
-/* --- Container for the side-by-side buttons --- */
+
 .form-actions {
     display: flex;
     gap: 15px; 
@@ -377,7 +377,7 @@ footer {
     width: 100%;
 }
 
-/* Styling for the Send and Call buttons */
+
 .form-actions .button, 
 .form-actions .call-now {
     flex: 1; 
@@ -395,7 +395,7 @@ footer {
     margin-top: 0; 
 }
 
-/* "Call Now" Button Color */
+
 .call-now {
     background: #d58916; 
     color: white;
@@ -407,9 +407,30 @@ footer {
     box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
 }
 
-/* Mobile: Stack them vertically on small phones */
+
 @media (max-width: 480px) {
     .form-actions {
         flex-direction: column;
     }
+.service-cards-container {
+    display: flex;
+    justify-content: center; 
+    gap: 20px;              
+    flex-wrap: wrap;       
+    padding: 20px 0;
+}
+
+.service-card {
+    flex: 1 1 300px;       
+    max-width: 350px;      
+    box-sizing: border-box; 
+}
+
+@media (max-width: 768px) {
+    .service-card {
+        flex: 1 1 100%;   
+        max-width: 100%;
+    }
+}
+
 }
