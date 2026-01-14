@@ -427,20 +427,24 @@ footer {
     flex: 1 1 300px;       
     max-width: 350px;      
     box-sizing: border-box; 
+}.whatsapp-button {
+    background: rgba(37, 211, 102, 0.2); /* WhatsApp Green with Glass effect */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-@media (max-width: 768px) {
-    .service-card {
-        flex: 1 1 100%;   
-        max-width: 100%;
-    }function sendToWhatsApp() {
-       const phoneNumber = "254792589609"; 
-    const message = "Hello Chief Safaris! I am interested in an executive transport inquiry from your website.";
-    const url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
-    window.open(url, '_blank').focus();
-}
+.whatsapp-button:hover {
+    background: rgba(37, 211, 102, 0.4);
+    transform: translateY(-2px);
 }
 
 }
+
 
 
