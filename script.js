@@ -68,7 +68,7 @@ if (contactForm) {
 function sendToWhatsApp() {
     // 1. Your stakeholder's phone number (Use International Format: Country Code + Number)
     // Example: 254 for Kenya. No + or 0 at the start.
-    const phoneNumber = "254XXXXXXXXX"; 
+    const phoneNumber = "254792589609"; 
 
     // 2. The Message (Customized for Chief Safaris)
     const message = "Hello Chief Safaris! I am interested in an executive transport inquiry from your website.";
@@ -80,3 +80,4 @@ function sendToWhatsApp() {
     window.open(url, '_blank').focus();
 }
 <
+
