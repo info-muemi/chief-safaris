@@ -1,75 +1,33 @@
-const contactForm = document.querySelector('.contact-form');
+function sendToWhatsApp() {
+    // 1. Get the values from your HTML IDs
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
 
-if (contactForm) {
-    contactForm.addEventListener('submit', function(event) {
-        // 1. Stop the form from trying to submit to GitHub (which causes the refresh/fail)
-        event.preventDefault(); 
-        
-        // 2. Clear previous errors
-        document.querySelectorAll('.error-message').forEach(el => {
-            el.textContent = '';
-            el.style.display = 'none';
-        });
-        document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(el => {
-            el.classList.remove('invalid');
-        });
+    // 2. Simple Validation: Ensure Name and Message aren't empty
+    if (name.trim() === "" || message.trim() === "") {
+        alert("Please enter your name and message details.");
+        return;
+    }
 
-        // 3. Get Input Values
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const phoneInput = document.getElementById('phone');
-        const messageInput = document.getElementById('message');
+    // 3. The Stakeholder's WhatsApp Number
+    const phoneNumber = "254792589609"; 
 
-        const nameError = document.getElementById('name-error');
-        const messageError = document.getElementById('message-error');
-        const contactError = document.getElementById('contact-error');
-        
-        let isValid = true; 
+    // 4. Create the formatted text message
+    const text = "New Website Inquiry:%0A%0A" + 
+                 "*Name:* " + name + "%0A" + 
+                 "*Contact:* " + (email || phone) + "%0A" + 
+                 "*Subject:* " + subject + "%0A" + 
+                 "*Message:* " + message;
 
-        // 4. Validation Checks
-        if (nameInput.value.trim() === '') {
-            nameError.textContent = 'Name is required.';
-            nameError.style.display = 'block';
-            nameInput.classList.add('invalid');
-            isValid = false;
-        } 
-        
-        if (messageInput.value.trim() === '') {
-            messageError.textContent = 'Message details are required.';
-            messageError.style.display = 'block';
-            messageInput.classList.add('invalid');
-            isValid = false;
-        }
+    // 5. Build the final URL
+    const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + text;
 
-        const emailValue = emailInput.value.trim();
-        const phoneValue = phoneInput.value.trim();
-        
-        if (emailValue === '' && phoneValue === '') {
-            contactError.textContent = 'Please provide either an Email or Phone number.';
-            contactError.style.display = 'block';
-            emailInput.classList.add('invalid');
-            phoneInput.classList.add('invalid');
-            isValid = false;
-        }
-        
-        // 5. THE FIX: If valid, send to WhatsApp instead of contactForm.submit()
-        if (isValid) {
-            const phoneNumber = "254792589609"; 
-            
-            // Build the dynamic message with the user's data
-            const waMessage = `Hello Chief Safaris!%0A%0A` +
-                              `*New Inquiry from Website*%0A` +
-                              `*Name:* ${nameInput.value}%0A` +
-                              `*Contact:* ${emailValue || phoneValue}%0A` +
-                              `*Message:* ${messageInput.value}`;
-
-            const url = "https://wa.me/" + phoneNumber + "?text=" + waMessage;
-
-            // Open WhatsApp in new tab
-            window.open(url, '_blank').focus();
-            
-            // Reset form so the user knows it's finished
-            contactForm.reset();
-        }
-    });
+    // 6. Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // 7. Reset the form after sending
+    document.getElementById('whatsappForm').reset();
 }
