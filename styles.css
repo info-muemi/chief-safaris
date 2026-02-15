@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box; 
 }
-
+https://github.com/info-muemi/chief-safaris/edit/main/styles.css
 body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -443,15 +443,19 @@ footer {
     background: rgba(37, 211, 102, 0.4);
     transform: translateY(-2px);
 }
+}
+
 .hero {
-    background: url('chief%20grid.png') no-repeat center center / cover;
+    background: linear-gradient(rgba(30, 42, 56, 0.5), rgba(30, 42, 56, 0.5)), 
+                url('chief%20grid.png') no-repeat center center / cover !important;
     height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    text-align: center;
 }
 
-}
 
 
 
